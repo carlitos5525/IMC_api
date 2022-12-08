@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace icm_api.Models
 {
     [ApiController]
-    [Route("api/icm")]
+    [Route("api/imc")]
     public class ImcController : ControllerBase
     {
         private readonly DataContext _context;
