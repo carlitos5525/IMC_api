@@ -24,6 +24,17 @@ namespace icm_api.Models
             return Created("", usuario);
         }
 
+        [HttpGet]
+        [Route("listar")]
+        public IActionResult Listar()
+        {
+            List<Usuario> usuarios =
+                _context.Usuarios.ToList();
+            if (usuarios.Count == 0) return NotFound();
+
+            return Ok(usuarios);
+        }
+
        
     }
 }
