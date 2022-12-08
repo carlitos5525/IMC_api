@@ -21,7 +21,7 @@ namespace icm_api.Models
         public IActionResult Cadastrar([FromBody] Imc imc)
         {
             
-            imc.Imc_resultado =  imc.Peso / imc.Altura;
+            imc.Imc_resultado =  imc.Peso / (imc.Altura * imc.Altura);
 
             if (imc.Imc_resultado <= 18.5)
             {
