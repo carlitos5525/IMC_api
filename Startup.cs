@@ -29,6 +29,16 @@ namespace icm_api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(
+                options =>
+                {
+                    options.AddPolicy("CorsPolicy", builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+                }
+            );
+
              services.AddDbContext<DataContext>
             (
                 options => options.UseSqlite("DataSource=carlosmayer.db;Cache=shared")
@@ -51,6 +61,9 @@ namespace icm_api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "icm_api v1"));
             }
 
+            app.UseCors("CorsPolicy");
+
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
