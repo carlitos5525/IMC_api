@@ -82,7 +82,7 @@ namespace icm_api.Models
 
         [HttpPatch]
         [Route("alterar")]
-        public IActionResult Palpitar([FromBody] Imc imc)
+        public IActionResult Editar([FromBody] Imc imc)
         {
             _context.Imcs_Tabela.Update(imc);
             _context.SaveChanges();
