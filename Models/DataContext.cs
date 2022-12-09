@@ -10,6 +10,6 @@ namespace icm_api.Models
         { }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Imc> Imcs { get; set; }
+        public DbSet<Imc> Imcs_Tabela { get; set; }
     }
 }

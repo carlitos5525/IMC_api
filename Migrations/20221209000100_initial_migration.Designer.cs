@@ -9,7 +9,7 @@ using icm_api.Models;
 namespace icm_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221208221845_initial_migration")]
+    [Migration("20221209000100_initial_migration")]
     partial class initial_migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace icm_api.Migrations
                     b.Property<string>("Classificacao_IMC")
                         .HasColumnType("TEXT");
 
+                    b.Property<float>("Imc_resultado")
+                        .HasColumnType("REAL");
+
                     b.Property<float>("Peso")
                         .HasColumnType("REAL");
 
@@ -40,7 +43,7 @@ namespace icm_api.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Imcs");
+                    b.ToTable("Imcs_Tabela");
                 });
 
             modelBuilder.Entity("icm_api.Models.Usuario", b =>

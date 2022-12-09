@@ -18,7 +18,7 @@ namespace icm_api.Models
 
         [HttpPost]
         [Route("cadastrar")]
-        public IActionResult Cadastrar([FromBody] Imc imc)
+        public IActionResult CadastrarImc([FromBody] Imc imc)
         {
             
             imc.Imc_resultado =  imc.Peso / (imc.Altura * imc.Altura);
@@ -44,7 +44,7 @@ namespace icm_api.Models
                 imc.Classificacao_IMC = "Obesidade grave";
             }
             
-            _context.Imcs.Add(imc);
+            _context.Imcs_Tabela.Add(imc);
             _context.SaveChanges();
             return Created("", imc);
         }
@@ -54,7 +54,7 @@ namespace icm_api.Models
         public IActionResult Listar()
         {
             List<Imc> imcs =
-                _context.Imcs.Include(f => f.Usuario).ToList();
+                _context.Imcs_Tabela.Include(f => f.Usuario).ToList();
 
             if (imcs.Count == 0) return NotFound();
 
@@ -65,7 +65,7 @@ namespace icm_api.Models
         [Route("buscar/{id}")]
         public IActionResult Buscar([FromRoute] int id)
         {
-            var icm_encontrado = _context.Imcs.Include(u => u.Usuario)
+            var icm_encontrado = _context.Imcs_Tabela.Include(u => u.Usuario)
             .FirstOrDefault(f => f.Id == id);
             
             if(icm_encontrado != null)
@@ -84,7 +84,7 @@ namespace icm_api.Models
         [Route("alterar")]
         public IActionResult Palpitar([FromBody] Imc imc)
         {
-            _context.Imcs.Update(imc);
+            _context.Imcs_Tabela.Update(imc);
             _context.SaveChanges();
             return Ok(imc);
         }

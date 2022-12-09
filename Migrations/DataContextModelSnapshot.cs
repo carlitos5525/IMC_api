@@ -41,7 +41,7 @@ namespace icm_api.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Imcs");
+                    b.ToTable("Imcs_Tabela");
                 });
 
             modelBuilder.Entity("icm_api.Models.Usuario", b =>

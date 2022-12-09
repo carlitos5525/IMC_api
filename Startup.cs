@@ -41,7 +41,7 @@ namespace icm_api
 
              services.AddDbContext<DataContext>
             (
-                options => options.UseSqlite("DataSource=carlosmayer.db;Cache=shared")
+                options => options.UseSqlite("DataSource=carlososcarmayer.db;Cache=shared")
             );
 
             services.AddControllers();
